@@ -33,11 +33,7 @@ from EXT-REMOVER by 3kh0
      document.title = prompt('Title?')
      ```
 ## Hapara Focus Session Bypass
-Run this code on any page to get access to Unblock Arcade, even if you're on a focus session. To make sure you can access it, you can open the Text app and paste it in. Make sure to save. Hapara cannot interact with this app, so you can use it to easily copy and paste.
-```
-document.write('<title>' + document.title + '</title><iframe src="//script-js.github.io/ubarcade/games?ref=embed" style="border: none; width:100%;height: 100%;position:absolute;left:0px;top:0px;">')
-```
-To get another website:
+To make sure you can access it, you can open the Text app and paste it in. Make sure to save. Hapara cannot interact with this app, so you can use it to easily copy and paste.
 ```
 document.write('<title>' + document.title + '</title><iframe src="' + prompt("URL?") + '" style="border: none; width:100%;height: 100%;position:absolute;left:0px;top:0px;">')
 ```
