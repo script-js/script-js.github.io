@@ -39,5 +39,5 @@ document.write('<title>' + document.title + '</title><iframe src="' + prompt("UR
 ```
 ### With Full Screen Hider
 ```
-document.write('<title>' + document.title + '</title><iframe src="https://hapara-hider.pages.dev/ssblock?url=//script-js.github.io/ubarcade/games?ref=embed" allowfullscreen style="border: none; width:100%;height: 100%;position:absolute;left:0px;top:0px;">')
+document.write('<title>' + document.title + '</title><iframe src="https://hapara-hider.pages.dev/ssblock?url=' + prompt("URL?") + '" allowfullscreen style="border: none; width:100%;height: 100%;position:absolute;left:0px;top:0px;">')
 ```
