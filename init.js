@@ -1,6 +1,6 @@
 /// execute_script.js
 window.addEventListener("keyup", event => {
-  if (event.ctrlKey && event.which === 192) {
+  if (event.ctrlKey && event.altKey && event.key === "`") {
       var win1 = window.open("about:blank","","width=500,height=700");
       win1.document.write(atob("PCFET0NUWVBFIEhUTUw+CjxodG1sPgogIDxoZWFkPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3NjcmlwdC1qcy5naXRodWIuaW8vanMtY3NzL3VydW4uY3NzIj4KICAgIDx0aXRsZT51UnVuPC90aXRsZT4KICA8L2hlYWQ+CiAgPGJvZHk+CiAgICA8aDE+dVJ1biBFeHRlbnNpb25zPC9oMT4KICAgIDxkaXYgY2xhc3M9ImZsZXgiIGlkPSJib3giPgogICAgPC9kaXY+CiAgPC9ib2R5Pgo8L2h0bWw+"));
       win1.runCode = function(element1) {
@@ -10,7 +10,6 @@ window.addEventListener("keyup", event => {
         window.close()
       }
       var packages = {
-       "Runner": ["The Original: run any JavaScript",btoa("eval(prompt('Type Code:'))")],
        "Page Editor (On)": ["Edit any page's contents",btoa("document.designMode = 'on'")],
        "Page Editor (Off)": ["Disable Page Editor",btoa("document.designMode = 'off'")],
        "Embed It!": ["Make almost any webpage another","ZG9jdW1lbnQud3JpdGUoJzx0aXRsZT4nICsgZG9jdW1lbnQudGl0bGUgKyAnPC90aXRsZT48aWZyYW1lIHNyYz0iJyArIHByb21wdCgiVVJMPyIpICsgJyIgc3R5bGU9ImJvcmRlcjogbm9uZTsgd2lkdGg6MTAwJTtoZWlnaHQ6IDEwMCU7cG9zaXRpb246YWJzb2x1dGU7bGVmdDowcHg7dG9wOjBweDsiIGFsbG93ZnVsbHNjcmVlbj4nKQ=="],
@@ -35,6 +34,8 @@ window.addEventListener("keyup", event => {
           win1.close()
         }
       },1000)
+  } else if (event.ctrlKey && event.altKey && event.key === "~") {
+    eval(prompt("Custom Code Here:"))
   }
 })
 
