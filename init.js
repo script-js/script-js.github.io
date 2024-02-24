@@ -6,7 +6,8 @@ window.addEventListener("keyup", event => {
       win1.runCode = function(element1) {
         var element = element1.parentElement;
         var ecmd = atob(element.querySelectorAll(".eCMD")[0].innerHTML);
-        window.cte = atob(ecmd);
+        console.log()
+        window.cte = ecmd;
         document.body.innerHTML = "Operation Complete. Please close this window."
       }
       var packages = {
