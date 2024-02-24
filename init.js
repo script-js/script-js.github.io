@@ -7,6 +7,7 @@ window.addEventListener("keyup", event => {
         var element = element1.parentElement;
         var ecmd = atob(element.querySelectorAll(".eCMD")[0].innerHTML);
         eval(ecmd);
+        window.close()
       }
       var packages = {
        "Runner": ["The Original: run any JavaScript",btoa("eval(prompt('Type Code:'))")],
