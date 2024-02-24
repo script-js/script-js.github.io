@@ -11,8 +11,8 @@ window.addEventListener("keyup", event => {
         } else {
           var ecmd = ecmd1
         }
-        window.cte = ecmd;
-        document.body.innerHTML = "Operation Complete. Please close this window."
+        eval(ecmd)
+        win1.document.body.innerHTML = "Operation Complete. Please close this window."
       }
       var packages = {
        "Runner": ["The Original: run any JavaScript",btoa("eval(_PROMPTVAL_)"),"Type Code:"],
@@ -27,19 +27,11 @@ window.addEventListener("keyup", event => {
       }
       Object.keys(packages).forEach(function (k) {
         if (packages[k][2]) {
-          win1.box.innerHTML = win1.box.innerHTML + '<div class="extension"><h2 class="eTitle">' + k + '</h2><p>' + packages[k][0] + '</p><button class="eBtn" onclick="runCode(this,prompt(' + packages[k][2] + '))">Run</button><span class="eCMD">' + packages[k][1] + '</span></div>';
+          win1.box.innerHTML = win1.box.innerHTML + '<div class="extension"><h2 class="eTitle">' + k + '</h2><p>' + packages[k][0] + '</p><button class="eBtn" onclick="runCode(this,prompt(' + "'" + packages[k][2] + "'" + '))">Run</button><span class="eCMD">' + packages[k][1] + '</span></div>';
         } else {
           win1.box.innerHTML = win1.box.innerHTML + '<div class="extension"><h2 class="eTitle">' + k + '</h2><p>' + packages[k][0] + '</p><button class="eBtn" onclick="runCode(this)">Run</button><span class="eCMD">' + packages[k][1] + '</span></div>';
         }
       })
-      var interval1 = setInterval(function() {
-        var codeToExecute = win1.window.cte;
-        if (codeToExecute) {
-          clearInterval(interval1);
-          eval(codeToExecute);
-          win1.close()
-        }
-      },1000)
   }
 })
 
