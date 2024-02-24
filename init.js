@@ -6,8 +6,8 @@ window.addEventListener("keyup", event => {
       win1.runCode = function(element1) {
         var element = element1.parentElement;
         var ecmd = atob(element.querySelectorAll(".eCMD")[0].innerHTML);
-        window.cte = ecmd;
-        window.close()
+        window.cte = atob(ecmd);
+        document.body.innerHTML = "Operation Complete. Please close this window."
       }
       var packages = {
        "Page Editor (On)": ["Edit any page's contents",btoa("document.designMode = 'on'")],
