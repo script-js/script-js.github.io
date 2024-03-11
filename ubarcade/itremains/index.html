@@ -9,10 +9,13 @@
 <body>    
     <script>
     var internal_pages = {
-      newtab: "https://www.webapplication.design/" || localStorage.getItem("newtab"),
+      newtab: "https://www.webapplication.design/",
       favicon: "//mbrowse.pages.dev/favicon.ico",
       title: "Tab"
     }
+if (localStorage.getItem("newtab")) {
+  internal_pages.newtab = localStorage.getItem("newtab")
+}
     window.addEventListener('keydown',function(event) {
       if (event.key = "T" && event.altKey) {
         var nt = prompt("New Tab URL:")
