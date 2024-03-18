@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    
+  </head>
+  <body>
+  <script>
+    var metaURL = new URLSearchParams(window.location.search).get("metaURL");
+    var metaTitle = new URLSearchParams(window.location.search).get("metaTitle");
+  </script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, update, get, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBsS4vb2oCsHPNIbsDplMShZPxldOB8lr0",
+    authDomain: "white-market-games-250d7.firebaseapp.com",
+    projectId: "white-market-games-250d7",
+    storageBucket: "white-market-games-250d7.appspot.com",
+    messagingSenderId: "629064500076",
+    appId: "1:629064500076:web:a072453811815a54aaa949",
+    measurementId: "G-4TTGJ1LT94"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+  const dbRef = ref(db);
+  get(child(dbRef, "/users/" + fbUID + "/analytics")).then((snapshot) => {
+  var toadd = {}
+  if (snapshot.exists()) {
+    var gdata = snapshot.val();
+    if (gdata[urlId]) {
+      toadd["/analytics/" + urlId] = gdata[urlId] + 1;
+    } else {
+      toadd["/analytics/" + urlId] = 1;
+    }
+  } else {
+    toadd["/analytics/" + urlId] = 1;
+  };
+  update(dbRef,toadd)
+});
+  </script>
+  </body>
+</html>
