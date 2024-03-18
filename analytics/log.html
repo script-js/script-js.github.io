@@ -26,23 +26,36 @@
     measurementId: "G-4TTGJ1LT94"
   };
 
+  function encodeFB(text2) {
+     var text1 = text2.replaceAll(".","%2E").replaceAll("#","%23").replaceAll("$","%24").replaceAll("/","%2F").replaceAll("[","%5B").replaceAll("]","%5D").replaceAll('"',"%22")
+     return text1;
+   }
+   
+   function decodeFB(text2) {
+     var text1 = text2.replaceAll("%2E",".").replaceAll("%23","#").replaceAll("%24","$").replaceAll("%2F","/").replaceAll("%5B","[").replaceAll("%5D","]").replaceAll('%22','"')
+     return text1;
+   } 
+    
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getDatabase();
   const dbRef = ref(db);
-  get(child(dbRef, "/users/" + fbUID + "/analytics")).then((snapshot) => {
+  get(child(dbRef, "/analytics/" + encodeFB(metaURL))).then((snapshot) => {
   var toadd = {}
-  if (snapshot.exists()) {
-    var gdata = snapshot.val();
-    if (gdata[urlId]) {
-      toadd["/analytics/" + urlId] = gdata[urlId] + 1;
+    if (snapshot.exists()) {
+      var gdata = snapshot.val();
     } else {
-      toadd["/analytics/" + urlId] = 1;
+      var gdata = {}
+    }
+    if (gdata[urlId]) {
+      toadd.clicks = gdata[urlId] + 1;
+    } else {
+      toadd.clicks = 1;
     }
   } else {
-    toadd["/analytics/" + urlId] = 1;
+    toadd.clicks = 1;
   };
-  update(dbRef,toadd)
+  update(ref(db,"/analytics/" + encodeFB(metaURL)),toadd)
 });
   </script>
   </body>
