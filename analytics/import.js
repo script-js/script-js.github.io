@@ -6,6 +6,6 @@ function analyticsInit(id) {
   }
   var anframe = document.createElement("iframe")
   anframe.style = "display:none";
-  anframe.src = "https://script-js.github.io/analytics/log?metaTitle=" + title + "&metaURL=" + location.href + "&metaID=" + id;
+  anframe.src = "https://script-js.github.io/analytics/log?metaURL=" + location.href + "&metaID=" + id;
   document.documentElement.appendChild(anframe)
 }
