@@ -65,10 +65,10 @@
       var an = snapshot.val()
     var atText = "";
     Object.keys(an).forEach(function (k) {
-      atText = atText + "\n" + decodeFB(k) + ": " + an[k] + " visits";
+      atText = atText + "<br>" + decodeFB(k) + ": " + an[k] + " visits";
     });
-   alert(atText)
-  } else {alert("No Analytics Data")};
+   btn.parentElement.innerHTML = atText
+  } else {btn.parentElement.innerHTML = "No Analytics Data"};
 });
     }
     window.getPageClicks = getPageClicks
