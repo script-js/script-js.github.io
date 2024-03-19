@@ -56,20 +56,7 @@
        get(child(dbRef,"/analytics")).then((snapshot) => {
   if (snapshot.exists()) {
       var an = snapshot.val()
-      Object.keys(an).forEach(function (k) {
-        if (tosort[k]) {
-          tosort[k] = tosort[k] + an[k]
-        } else {
-          tosort[k] = an[k]
-        }
-      });
-  }
-       });
-    });
     setTimeout(function() {
-    var sortedArray = Object.entries(tosort)
-    .sort((a, b) => b[1] - a[1])
-    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
     var atText = "";
     Object.keys(sortedArray).forEach(function (k) {
       atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + sortedArray[k].clicks + "<br>Users: " + sortedArray[k].users + "<p></p></div>";
