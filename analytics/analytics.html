@@ -1,11 +1,10 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <link rel="stylesheet" href="https://script-js.github.io/js-css/darkice.css" />
+    <link rel="stylesheet" href="https://script-js.github.io/js-css/urun.css" />
   </head>
   <body style="text-align:center">
-  <h1 id="mytop">Loading Data...</h1>
-  <h3 id="alltop">Loading Data...</h1>
+  <h3 id="alltop" class="flex">Loading Data...</h1>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -68,9 +67,9 @@
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
     var atText = "<ol>";
     Object.keys(sortedArray).forEach(function (k) {
-      atText = atText + "<li><a href='" + decodeFB(k) + "'>" + sortedArray[k].title + "</a> " + sortedArray[k].clicks + " clicks, " + sortedArray[k].users + " users.</li>";
+      atText = atText + "<div class='extension'><h2 class='eTitle'>" + sortedArray[k].title + "</h1><p>Clicks: " + sortedArray[k].clicks + "</p><p>Users: " + sortedArray[k].users + "</p><a href='" + decodeFB(k) + "'><button class='eBtn'>Open</button></a></div>";
     });
-    alltop.innerHTML = "Top Games (most - least popular): " + atText + "</ol>"
+    alltop.innerHTML = atText
     },1000)
   } else {alltop.innerHTML = "Error Getting Data"};
 });
