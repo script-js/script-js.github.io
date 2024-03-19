@@ -60,7 +60,7 @@
   } else {alltop.innerHTML = "Error Getting Data"};
 });
     function getPageClicks(id) {
-      get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
+      return get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
   if (snapshot.exists()) {
       var an = snapshot.val()
     var atText = "";
