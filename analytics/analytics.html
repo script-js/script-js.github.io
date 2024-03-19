@@ -49,17 +49,12 @@
 
   get(child(dbRef, "/analytics")).then((snapshot) => {
   if (snapshot.exists()) {
-    var gdata = snapshot.val();
     var tosort = {}
-    window.tosort = tosort
-    Object.keys(gdata).forEach(function (k) {
-       get(child(dbRef,"/analytics")).then((snapshot) => {
-  if (snapshot.exists()) {
       var an = snapshot.val()
     setTimeout(function() {
     var atText = "";
-    Object.keys(sortedArray).forEach(function (k) {
-      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + sortedArray[k].clicks + "<br>Users: " + sortedArray[k].users + "<p></p></div>";
+    Object.keys(an).forEach(function (k) {
+      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + an[k].clicks + "<br>Users: " + an[k].users + "<p></p></div>";
     });
     alltop.innerHTML = atText
     },1000)
