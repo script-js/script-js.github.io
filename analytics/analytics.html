@@ -61,7 +61,7 @@
 });
     function getPageClicks(id) {
       var rtext = "";
-      return get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
+      get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
   if (snapshot.exists()) {
       var an = snapshot.val()
     var atText = "";
