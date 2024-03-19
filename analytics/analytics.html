@@ -67,7 +67,7 @@
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
     var atText = "<ol>";
     Object.keys(sortedArray).forEach(function (k) {
-      atText = atText + "<div class='extension'><h2 class='eTitle'>" + sortedArray[k].title + "</h1><p>Clicks: " + sortedArray[k].clicks + "</p><p>Users: " + sortedArray[k].users + "</p><a href='" + decodeFB(k) + "'><button class='eBtn'>Open</button></a></div>";
+      atText = atText + "<div class='extension'><h2 class='eTitle'>" + sortedArray[k].title + "</h1>Site visits: " + sortedArray[k].clicks + "<br>Users: " + sortedArray[k].users + "<a href='" + decodeFB(k) + "'><button class='eBtn'>Open</button></a></div>";
     });
     alltop.innerHTML = atText
     },1000)
