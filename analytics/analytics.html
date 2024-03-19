@@ -59,7 +59,7 @@
     alltop.innerHTML = atText
   } else {alltop.innerHTML = "Error Getting Data"};
 });
-    function getPageClicks(id) {
+    function getPageClicks(id,btn) {
       var rtext = "";
       get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
   if (snapshot.exists()) {
@@ -68,10 +68,9 @@
     Object.keys(an).forEach(function (k) {
       atText = atText + "\n" + decodeFB(k) + ": " + an[k] + " visits";
     });
-    rtext = atText
-  } else {rtext = "No Analytics Data"};
+   console.log(atText)
+  } else {console.log("No Analytics Data")};
 });
-      return rtext;
     }
     window.getPageClicks = getPageClicks
   </script>
