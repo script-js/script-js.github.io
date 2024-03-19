@@ -70,9 +70,9 @@
     var sortedArray = Object.entries(tosort)
     .sort((a, b) => b[1] - a[1])
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
-    var atText = "<ol>";
+    var atText = "";
     Object.keys(sortedArray).forEach(function (k) {
-      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + sortedArray[k].clicks + "<br>Users: " + sortedArray[k].users + "</div>";
+      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + sortedArray[k].clicks + "<br>Users: " + sortedArray[k].users + "<p></p></div>";
     });
     alltop.innerHTML = atText
     },1000)
