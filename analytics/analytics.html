@@ -54,7 +54,7 @@
       var an = snapshot.val()
     var atText = "";
     Object.keys(an).forEach(function (k) {
-      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + an[k].clicks + "<br>Users: " + an[k].users + "<p><button class='eBtn' onclick='getPageClicks('" + k + "',this)'>Views by Page</button></p></div>";
+      atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + an[k].clicks + "<br>Users: " + an[k].users + "<p><button class='eBtn' onclick='getPageClicks(" + '"' + k + '"' + ",this)'>Views by Page</button></p></div>";
     });
     alltop.innerHTML = atText
   } else {alltop.innerHTML = "Error Getting Data"};
