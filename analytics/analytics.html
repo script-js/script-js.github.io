@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://script-js.github.io/js-css/darkice.css" />
+  </head>
+  <body style="text-align:center">
+  <h1 id="mytop">Loading Data...</h1>
+  <h3 id="alltop">Loading Data...</h1>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getDatabase, ref, update, get, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBsS4vb2oCsHPNIbsDplMShZPxldOB8lr0",
+    authDomain: "white-market-games-250d7.firebaseapp.com",
+    projectId: "white-market-games-250d7",
+    storageBucket: "white-market-games-250d7.appspot.com",
+    messagingSenderId: "629064500076",
+    appId: "1:629064500076:web:a072453811815a54aaa949",
+    measurementId: "G-4TTGJ1LT94"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+  const auth = getAuth();
+  const dbRef = ref(db);
+
+  function decodeFB(text2) {
+     var text1 = text2.replaceAll("%2E",".").replaceAll("%23","#").replaceAll("%24","$").replaceAll("%2F","/").replaceAll("%5B","[").replaceAll("%5D","]").replaceAll('%22','"')
+     return text1;
+   }
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.fbUID = user.uid;
+  get(child(dbRef, "/users/" + fbUID + "/analytics")).then((snapshot) => {
+  if (snapshot.exists()) {
+    var gdata = snapshot.val();
+    var sortedArray = Object.entries(gdata)
+    .sort((a, b) => b[1] - a[1]);
+    var highestName = sortedArray[0][0];
+    mytop.innerHTML = "Your top game: " + decodeFB(highestName) + " (" + gdata[highestName] + " plays)";
+  } else {mytop.innerHTML = "No Anayltics Data"};
+});
+  } else {mytop.innerHTML = "No Access"}
+
+  get(child(dbRef, "/users")).then((snapshot) => {
+  if (snapshot.exists()) {
+    var gdata = snapshot.val();
+    var tosort = {}
+    window.tosort = tosort
+    Object.keys(gdata).forEach(function (k) {
+       get(child(dbRef, "/users/" + k + "/analytics")).then((snapshot) => {
+  if (snapshot.exists()) {
+      var an = snapshot.val()
+      Object.keys(an).forEach(function (k) {
+        if (tosort[k]) {
+          tosort[k] = tosort[k] + an[k]
+        } else {
+          tosort[k] = an[k]
+        }
+      });
+  }
+       });
+    });
+    setTimeout(function() {
+    var sortedArray = Object.entries(tosort)
+    .sort((a, b) => b[1] - a[1])
+    .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+    var atText = "<ol>";
+    Object.keys(sortedArray).forEach(function (k) {
+      atText = atText + "<li><a href='go.html?url=" + decodeFB(k) + "'>" + decodeFB(k) + "</a> (" + sortedArray[k] + " plays)" + "</li>";
+    });
+    if (fbUID) {
+    alltop.innerHTML = "Top Games (most - least popular): " + atText + "</ol>"
+    }
+    },1000)
+  } else {alltop.innerHTML = "Error Getting Data"};
+});
+})
+  </script>
+  </body>
+</html>
