@@ -52,15 +52,25 @@
   if (snapshot.exists()) {
     var tosort = {}
       var an = snapshot.val()
-    setTimeout(function() {
     var atText = "";
     Object.keys(an).forEach(function (k) {
       atText = atText + "<div class='extension'><h2 class='eTitle'>" + decodeFB(k) + "</h1>Site visits: " + an[k].clicks + "<br>Users: " + an[k].users + "<p></p></div>";
     });
     alltop.innerHTML = atText
-    },1000)
   } else {alltop.innerHTML = "Error Getting Data"};
 });
+    function getPageClicks(id) {
+      get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
+  if (snapshot.exists()) {
+      var an = snapshot.val()
+    var atText = "";
+    Object.keys(an).forEach(function (k) {
+      atText = atText + "\n" + decodeFB(k) + ": " + an[k] + " visits";
+    });
+    return atText
+  } else {return "No Analytics Data"};
+});
+    }
   </script>
   </body>
 </html>
