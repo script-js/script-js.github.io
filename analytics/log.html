@@ -41,6 +41,7 @@
      return text1;
    } 
     var metaTitle = encodeFB(new URLSearchParams(window.location.search).get("metaID"));
+    var metaPage = encodeFB(new URLSearchParams(window.location.search).get("metaPage"));
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getDatabase();
@@ -65,6 +66,12 @@
       }
       localStorage.setItem("viewdone","true")
     }
+    var pages = gdata.pages;
+    if (gdata[metaPage]) {
+        toadd[metaPage] = gdata[metaPage] + 1;
+      } else {
+        toadd[metaPage] = 1;
+      }
   update(ref(db,"/analytics/" + metaTitle),toadd)
 });
   </script>
