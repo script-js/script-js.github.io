@@ -43,13 +43,13 @@
      return text1;
    }
 
-  get(child(dbRef, "/users")).then((snapshot) => {
+  get(child(dbRef, "/analytics")).then((snapshot) => {
   if (snapshot.exists()) {
     var gdata = snapshot.val();
     var tosort = {}
     window.tosort = tosort
     Object.keys(gdata).forEach(function (k) {
-       get(child(dbRef, "/users/" + k + "/analytics")).then((snapshot) => {
+       get(child(dbRef,"/analytics")).then((snapshot) => {
   if (snapshot.exists()) {
       var an = snapshot.val()
       Object.keys(an).forEach(function (k) {
