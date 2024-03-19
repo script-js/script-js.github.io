@@ -70,9 +70,7 @@
     Object.keys(sortedArray).forEach(function (k) {
       atText = atText + "<li><a href='go.html?url=" + decodeFB(k) + "'>" + decodeFB(k) + "</a> (" + sortedArray[k] + " plays)" + "</li>";
     });
-    if (fbUID) {
     alltop.innerHTML = "Top Games (most - least popular): " + atText + "</ol>"
-    }
     },1000)
   } else {alltop.innerHTML = "Error Getting Data"};
 });
