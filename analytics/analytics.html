@@ -68,7 +68,7 @@
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
     var atText = "<ol>";
     Object.keys(sortedArray).forEach(function (k) {
-      atText = atText + "<li><a href='go.html?url=" + decodeFB(k) + "'>" + decodeFB(k) + "</a> (" + sortedArray[k] + " plays)" + "</li>";
+      atText = atText + "<li><a href='" + decodeFB(k) + "'>" + sortedArray[k].title + "</a> " + sortedArray[k].clicks + " clicks, " + sortedArray[k].users + " users.</li>";
     });
     alltop.innerHTML = "Top Games (most - least popular): " + atText + "</ol>"
     },1000)
