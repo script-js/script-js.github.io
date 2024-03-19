@@ -66,9 +66,13 @@
       }
       localStorage.setItem("viewdone","true")
     }
-    var pages = gdata.pages;
-    if (gdata.pages[metaPage]) {
-        toadd.pages[metaPage] = gdata.pages[metaPage] + 1;
+    if (gdata.pages) {
+      var pages1 = gdata.pages;
+    } else {
+      var pages1 = {}
+    }
+    if (pages1[metaPage]) {
+        toadd.pages[metaPage] = pages1[metaPage] + 1;
       } else {
         toadd.pages[metaPage] = 1;
       }
