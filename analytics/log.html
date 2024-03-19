@@ -53,8 +53,8 @@
     } else {
       var gdata = {}
     }
-    if (gdata[metaURL]) {
-      toadd.clicks = gdata[metaURL] + 1;
+    if (gdata.clicks) {
+      toadd.clicks = gdata.clicks + 1;
     } else {
       toadd.clicks = 1;
     }
