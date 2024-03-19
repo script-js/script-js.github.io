@@ -1,14 +1,11 @@
-function analyticsFrame(title,url) {
+function analyticsInit(id) {
+  if (document.title) {
+    var title = document.title
+  } else {
+    var title = location.href
+  }
   var anframe = document.createElement("iframe")
   anframe.style = "display:none";
-  anframe.src = "https://script-js.github.io/analytics/log?metaTitle=" + title + "&metaURL=" + url;
+  anframe.src = "https://script-js.github.io/analytics/log?metaTitle=" + title + "&metaURL=" + location.href + "&metaID=" + id;
   document.documentElement.appendChild(anframe)
-}
-
-if (!noJAstart) {
-  if (document.title) {
-    analyticsFrame(document.title,location.href)
-  } else {
-    analyticsFrame(location.href,location.href)
-  }
 }
