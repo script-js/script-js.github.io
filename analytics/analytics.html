@@ -60,6 +60,7 @@
   } else {alltop.innerHTML = "Error Getting Data"};
 });
     function getPageClicks(id) {
+      var rtext = "";
       return get(child(dbRef, "/analytics/" + id + "/pages")).then((snapshot) => {
   if (snapshot.exists()) {
       var an = snapshot.val()
@@ -67,9 +68,10 @@
     Object.keys(an).forEach(function (k) {
       atText = atText + "\n" + decodeFB(k) + ": " + an[k] + " visits";
     });
-    return atText
-  } else {return "No Analytics Data"};
+    rtext = atText
+  } else {rtext = "No Analytics Data"};
 });
+      return rtext;
     }
     window.getPageClicks = getPageClicks
   </script>
