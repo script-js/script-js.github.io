@@ -12,9 +12,6 @@
   <body style="text-align:center">
   <h1>ExactAlytics Dashboard</h1>
   <div id="alltop" class="flex">Loading Data...</div>
-  <p>Your API key</p>
-  <textarea id="importText" onclick="this.select()" readonly></textarea>
-  <script>var key = localStorage.getItem("akey") if (key) {importText.innerHTML = btoa(key)} else {location.replace("setup")}</script>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
